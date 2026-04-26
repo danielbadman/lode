@@ -1,3 +1,4 @@
+// workout.ts
 export type Workout = {
   id: string
   userId: string
@@ -13,13 +14,28 @@ export type CreateWorkoutInput = {
 export type WorkoutExercise = {
   id: string
   workoutId: string
+
+  // core identity
+  exerciseId: string   // ← from ExerciseDB
   name: string
+
+  // useful metadata
+  bodyPart: string
+  target: string
+  equipment: string
+  gifUrl: string | null
+
   createdAt: string
 }
 
 export type CreateWorkoutExerciseInput = {
   workoutId: string
   name: string
+  exerciseId: string
+  bodyPart: string
+  target: string
+  equipment: string
+  gifUrl: string | null
 }
 
 export type ExerciseSet = {

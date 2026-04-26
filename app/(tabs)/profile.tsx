@@ -1,17 +1,20 @@
+import { TabScreen } from '@/components/tab-screen'
 import { supabase } from '@/lib/supabase'
 import { Text, TouchableOpacity, View } from 'react-native'
 
 export default function ProfileScreen() {
   return (
-    <View className="flex-1 items-center justify-center bg-white px-6">
-      <Text className="text-2xl font-bold mb-4 text-gray-900">You are logged in</Text>
+    <TabScreen title="Profile" subtitle="Account settings and sign-out controls.">
+      <View className="flex-1 items-center justify-center px-6">
+        <Text className="mb-4 text-2xl font-bold text-gray-900">You are logged in</Text>
 
-      <TouchableOpacity
-        className="bg-red-500 rounded-lg px-6 py-3"
-        onPress={() => supabase.auth.signOut()}
-      >
-        <Text className="text-white font-semibold">Sign Out</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          className="rounded-lg bg-red-500 px-6 py-3"
+          onPress={() => supabase.auth.signOut()}
+        >
+          <Text className="font-semibold text-white">Sign Out</Text>
+        </TouchableOpacity>
+      </View>
+    </TabScreen>
   )
 }

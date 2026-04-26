@@ -1,7 +1,8 @@
+// exercise.ts
 export type ExerciseDbExercise = {
   exerciseId: string
   name: string
-  gifUrl: string
+  gifUrl: string | null
   targetMuscles: string[]
   bodyParts: string[]
   equipments: string[]
@@ -12,7 +13,7 @@ export type ExerciseDbExercise = {
 export type ExerciseOption = {
   exerciseId: string
   name: string
-  gifUrl: string
+  gifUrl: string | null
   targetMuscles: string[]
   bodyParts: string[]
   equipments: string[]

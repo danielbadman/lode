@@ -1,9 +1,15 @@
+// workoutServices.ts
+
 import { ExerciseOption } from '@/types/exercise'
 import {
-  CreateExerciseSetInput,
-  CreateWorkoutExerciseInput,
-  CreateWorkoutInput,
+    CreateExerciseSetInput,
+    CreateWorkoutExerciseInput,
+    CreateWorkoutInput,
 } from '@/types/workout'
+
+function getPrimaryValue(values: string[]): string {
+  return values[0] ?? ''
+}
 
 export function createWorkoutInput(
   userId: string,
@@ -21,7 +27,12 @@ export function createWorkoutExerciseInput(
 ): CreateWorkoutExerciseInput {
   return {
     workoutId,
+    exerciseId: exercise.exerciseId,
     name: exercise.name,
+    bodyPart: getPrimaryValue(exercise.bodyParts),
+    target: getPrimaryValue(exercise.targetMuscles),
+    equipment: getPrimaryValue(exercise.equipments),
+    gifUrl: exercise.gifUrl,
   }
 }
 
