@@ -1,3 +1,4 @@
+import { useAppTheme } from '@/hooks/use-app-theme'
 import { ReactNode } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Text, View } from 'react-native'
@@ -15,12 +16,25 @@ export function TabScreen({
   children,
   contentClassName = '',
 }: TabScreenProps) {
+  const theme = useAppTheme()
+
   return (
-    <SafeAreaView edges={['top']} className="flex-1 bg-slate-50">
-      <View className="border-b border-slate-200 bg-white px-4 pb-4 pt-3">
-        <Text className="text-3xl font-bold text-slate-900">{title}</Text>
+    <SafeAreaView
+      edges={['top']}
+      className={`flex-1 ${theme.isDark ? 'bg-slate-950' : 'bg-slate-50'}`}
+    >
+      <View
+        className={`border-b px-4 pb-4 pt-3 ${
+          theme.isDark ? 'border-slate-800 bg-slate-900' : 'border-slate-200 bg-white'
+        }`}
+      >
+        <Text className={`text-3xl font-bold ${theme.isDark ? 'text-slate-50' : 'text-slate-900'}`}>
+          {title}
+        </Text>
         {subtitle ? (
-          <Text className="mt-1 text-sm text-slate-600">{subtitle}</Text>
+          <Text className={`mt-1 text-sm ${theme.isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+            {subtitle}
+          </Text>
         ) : null}
       </View>
 
